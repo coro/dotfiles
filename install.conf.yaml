@@ -1,0 +1,27 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- shell:
+    - command: brew bundle install
+      description: Install Homebrew packages
+      quiet: false
+      stdout: true
+      stderr: true
+
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
+
+- link:
+    ~/.config/nvim:
+      path: config/nvim
+    ~/.tmux.conf:
+
+- shell:
+    - command: nvim --headless "+Lazy! sync" +qa
+      description: Prepare Neovim
+      quiet: false
+
