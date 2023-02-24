@@ -48,3 +48,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Use system clipboard
 vim.o.clipboard = "unnamedplus"
+
+-- Set indent to 2 spaces
+vim.o.smartindent = true
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
