@@ -9,7 +9,7 @@ return {
       vim.cmd([[colorscheme nightfox]])
     end,
   },
-  { 
+  {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
       char = '┊',
@@ -32,7 +32,19 @@ return {
     config=function()
       require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'terraform' },
+        ensure_installed = {
+          'go',
+          'gomod',
+          'gosum',
+          'lua',
+          'python',
+          'rust',
+          'typescript',
+          'help',
+          'vim',
+          'terraform',
+          'clojure',
+        },
 
         highlight = { enable = true },
         indent = { enable = true, disable = { 'python' } },
@@ -57,5 +69,4 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
   },
-
 }
