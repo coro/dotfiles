@@ -17,6 +17,11 @@ return {
     branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-    }
+    },
+    keys = {
+      { '<leader>km', ':Telescope keymaps<CR>',  desc = '[k]ey[m]aps' },
+      { '<leader>lg', ':Telescope live_grep<CR>',  desc = '[l]ive [g]rep' },
+      { '<leader>ff', ':Telescope find_files<CR>', desc = '[f]ind [f]iles' },
+    },
   },
 }
