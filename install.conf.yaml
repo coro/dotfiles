@@ -18,8 +18,8 @@
 - link:
     ~/.config/nvim:
       path: config/nvim
-    ~/.config/kitty:
-      path: config/kitty
+    ~/.config/wezterm:
+      path: config/wezterm
 
 - shell:
     - command: nvim --headless "+Lazy! sync" +qa
