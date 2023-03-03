@@ -14,17 +14,14 @@
     ~/:
     ~/.config:
       recursive: true
-    "~/Library/Application\ Support/iTerm2/DynamicProfiles":
-      force: true
 
 - link:
     ~/.config/nvim:
       path: config/nvim
-    ~/.tmux.conf:
+    ~/.config/kitty:
+      path: config/kitty
 
 - shell:
-    - command: jq "(.Profiles[]).\"Background Image Location\" |= \"$(PWD)/assets/Coriolis_Station_001.webp\"" assets/iterm_profiles.json > ~/Library/Application\ Support/iTerm2/DynamicProfiles/iterm_profiles.json
-      description: Configure background image of iTerm
     - command: nvim --headless "+Lazy! sync" +qa
       description: Prepare Neovim
       quiet: false
