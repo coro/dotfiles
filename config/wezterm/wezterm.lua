@@ -1,14 +1,14 @@
 local wezterm = require("wezterm")
 return {
   font = wezterm.font 'JetBrains Mono',
-  font_size = 14.0,
+  font_size = 13.0,
   background = {
     {
       source = {
         File = wezterm.config_dir .. '/Coriolis_Station.png'
       },
       hsb = {
-        brightness = 0.05
+        brightness = 0.1
       },
       horizontal_align = "Center",
       vertical_align = "Middle",
