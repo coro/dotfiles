@@ -18,6 +18,9 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    cmd = {
+      "Telescope"
+    },
     keys = {
       { '<leader>km', ':Telescope keymaps<CR>',  desc = '[k]ey[m]aps' },
       { '<leader>lg', ':Telescope live_grep<CR>',  desc = '[l]ive [g]rep' },
