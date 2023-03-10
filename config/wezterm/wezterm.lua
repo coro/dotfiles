@@ -9,7 +9,7 @@ return {
         File = wezterm.config_dir .. '/Coriolis_Station.png'
       },
       hsb = {
-        brightness = 0.1
+        brightness = 0.05
       },
       horizontal_align = "Center",
       vertical_align = "Middle",
