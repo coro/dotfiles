@@ -33,5 +33,12 @@ return {
       mods = 'LEADER',
       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
+    { key = 'phys:1', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(0) },
+    { key = 'phys:2', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(1) },
+    { key = 'phys:3', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(2) },
+    { key = 'phys:4', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(3) },
+    { key = 'phys:5', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(4) },
+    { key = 'phys:6', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(5) },
+    { key = 'phys:7', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(6) },
   },
 }
