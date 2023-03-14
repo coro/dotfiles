@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 return {
   font = wezterm.font 'JetBrains Mono',
   font_size = 13.0,
+  color_scheme = "nightfox",
   tab_bar_at_bottom = true,
   background = {
     {
