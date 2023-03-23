@@ -40,5 +40,6 @@ return {
     { key = 'phys:5', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(4) },
     { key = 'phys:6', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(5) },
     { key = 'phys:7', mods = 'SHIFT|CTRL', action = wezterm.action.ActivateTab(6) },
+    { key = 'Backspace', mods = 'SHIFT|CTRL', action = wezterm.action.ClearScrollback("ScrollbackAndViewport") },
   },
 }
