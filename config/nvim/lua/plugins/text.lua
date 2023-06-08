@@ -1,4 +1,9 @@
 return {
-  "numToStr/Comment.nvim",
-  config = true,
+  {
+    "numToStr/Comment.nvim",
+    config = true,
+  },
+  {
+    "tpope/vim-surround",
+  }
 }
