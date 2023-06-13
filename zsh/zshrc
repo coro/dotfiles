@@ -1,0 +1,12 @@
+alias vim=nvim
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. $(brew --prefix)/opt/asdf/libexec/asdf.sh
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+export GPG_TTY="$(tty)"
+
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+autoload -Uz compinit && compinit

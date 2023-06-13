@@ -16,10 +16,20 @@
       recursive: true
 
 - link:
+    ~/.zprofile:
+      path: zsh/zprofile
+    ~/.zshrc:
+      path: zsh/zshrc
+    ~/.fzf.zsh:
+      path: zsh/fzf.zsh
+    ~/.gitconfig:
+      path: gitconfig
     ~/.config/nvim:
       path: config/nvim
     ~/.config/wezterm:
       path: config/wezterm
+    ~/.gnupg/gpg-agent.conf:
+      path: gnupg/gpg-agent.conf
 
 - shell:
     - command: nvim --headless "+Lazy! sync" +qa

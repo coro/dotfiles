@@ -40,7 +40,6 @@ return {
           'python',
           'rust',
           'typescript',
-          'help',
           'vim',
           'terraform',
           'clojure',

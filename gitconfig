@@ -1,0 +1,9 @@
+[commit]
+	gpgsign = true
+[user]
+	name = Connor Rogers
+	email = 23215294+coro@users.noreply.github.com
+	signingkey = 1246DBEC30EEE240
+[alias]
+	co = checkout
+	st = status
