@@ -22,6 +22,8 @@
       path: zsh/zshrc
     ~/.fzf.zsh:
       path: zsh/fzf.zsh
+    ~/.posh.json:
+      path: posh.json
     ~/.gitconfig:
       path: gitconfig
     ~/.config/nvim:
