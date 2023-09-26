@@ -1,4 +1,24 @@
 local wezterm = require("wezterm")
+
+
+local function get_current_working_dir(tab)
+  local current_dir = tab.active_pane.current_working_dir
+  local HOME_DIR = string.format('file://%s', os.getenv('HOME'))
+
+  return current_dir == HOME_DIR and wezterm.nerdfonts.md_home
+      or string.gsub(current_dir, '(.*[/\\])(.*)', '%2')
+end
+
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    return wezterm.format({
+      { Attribute = { Intensity = 'Bold' } },
+      { Text = string.format(' %d  %s ', tab.tab_index+1, get_current_working_dir(tab)) },
+    })
+  end
+)
+
 return {
   font = wezterm.font 'JetBrains Mono',
   font_size = 13.0,
