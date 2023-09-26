@@ -71,16 +71,49 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/nul
 
 # Disable fn/Globe and Caps Lock
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys '{
-    15 =     {
+    118 =         {
+        enabled = 0;
+        value =             {
+            parameters =                 (
+                65535,
+                18,
+                262144
+            );
+            type = standard;
+        };
+    };
+    119 =         {
+        enabled = 0;
+        value =             {
+            parameters =                 (
+                65535,
+                19,
+                262144
+            );
+            type = standard;
+        };
+    };
+    120 =         {
+        enabled = 0;
+        value =             {
+            parameters =                 (
+                65535,
+                20,
+                262144
+            );
+            type = standard;
+        };
+    };
+    15 =         {
         enabled = 0;
     };
-    16 =     {
+    16 =         {
         enabled = 0;
     };
-    164 =     {
+    164 =         {
         enabled = 0;
-        value =         {
-            parameters =             (
+        value =             {
+            parameters =                 (
                 65535,
                 65535,
                 0
@@ -88,40 +121,40 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys '{
             type = standard;
         };
     };
-    17 =     {
+    17 =         {
         enabled = 0;
     };
-    18 =     {
+    18 =         {
         enabled = 0;
     };
-    19 =     {
+    19 =         {
         enabled = 0;
     };
-    20 =     {
+    20 =         {
         enabled = 0;
     };
-    21 =     {
+    21 =         {
         enabled = 0;
     };
-    22 =     {
+    22 =         {
         enabled = 0;
     };
-    23 =     {
+    23 =         {
         enabled = 0;
     };
-    24 =     {
+    24 =         {
         enabled = 0;
     };
-    25 =     {
+    25 =         {
         enabled = 0;
     };
-    26 =     {
+    26 =         {
         enabled = 0;
     };
-    60 =             {
+    60 =         {
         enabled = 0;
-        value =                 {
-            parameters =                     (
+        value =             {
+            parameters =                 (
                 32,
                 49,
                 262144
@@ -129,10 +162,10 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys '{
             type = standard;
         };
     };
-    61 =             {
+    61 =         {
         enabled = 0;
-        value =                 {
-            parameters =                     (
+        value =             {
+            parameters =                 (
                 32,
                 49,
                 786432
@@ -140,19 +173,63 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys '{
             type = standard;
         };
     };
-    79 =     {
-        enabled = 1;
+    64 =         {
+        enabled = 0;
+        value =             {
+            parameters =                 (
+                32,
+                49,
+                1048576
+            );
+            type = standard;
+        };
     };
-    80 =     {
+    79 =         {
         enabled = 1;
+        value =             {
+            parameters =                 (
+                65535,
+                123,
+                8650752
+            );
+            type = standard;
+        };
     };
-    81 =     {
+    80 =         {
         enabled = 1;
+        value =             {
+            parameters =                 (
+                65535,
+                123,
+                8781824
+            );
+            type = standard;
+        };
     };
-    82 =     {
+    81 =         {
         enabled = 1;
+        value =             {
+            parameters =                 (
+                65535,
+                124,
+                8650752
+            );
+            type = standard;
+        };
     };
-}'
+    82 =         {
+        enabled = 1;
+        value =             {
+            parameters =                 (
+                65535,
+                124,
+                8781824
+            );
+            type = standard;
+        };
+    };
+}
+'
 #
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -165,6 +242,9 @@ defaults write com.apple.finder ShowStatusBar -bool true
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
+
+# Raycast: use cmd-Space as shortcut
+defaults write com.raycast.macos raycastGlobalHotkey -string "Command-49"
 
 # Start Rectangle on boot (won't work, not installed yet)
 # defaults write com.knollsoft.Rectangle launchOnLogin -int 1
