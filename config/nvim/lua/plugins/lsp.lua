@@ -37,6 +37,7 @@ return {
       require 'lspconfig'.terraformls.setup(opts)
       require 'lspconfig'.clojure_lsp.setup(opts)
       require 'lspconfig'.pyright.setup(opts)
+      require 'lspconfig'.rust_analyzer.setup(opts)
       require 'lspconfig'.lua_ls.setup {
         opts,
         settings = {
