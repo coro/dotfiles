@@ -37,4 +37,5 @@
     - command: nvim --headless "+Lazy! sync" +qa
       description: Prepare Neovim
       quiet: false
-
+    - command: osascript -e 'tell application "System Events" to tell every desktop to set picture to "~/.config/wezterm/Coriolis_Station.png"' && killall Dock
+      description: Set Desktop wallpaper

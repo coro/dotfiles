@@ -4,3 +4,10 @@
 
 - Git
 - Homebrew
+- MacOS
+
+## Setup
+
+```sh
+./install
+```

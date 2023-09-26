@@ -4,18 +4,10 @@ return {
   font_size = 13.0,
   color_scheme = "nightfox",
   tab_bar_at_bottom = true,
-  background = {
-    {
-      source = {
-        File = wezterm.config_dir .. '/Coriolis_Station.png'
-      },
-      hsb = {
-        brightness = 0.05
-      },
-      horizontal_align = "Center",
-      vertical_align = "Middle",
-    },
-  },
+  window_background_opacity = 0.9,
+  macos_window_background_blur = 7,
+  mouse_wheel_scrolls_tabs = false,
+  use_fancy_tab_bar = false,
   leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
     {
