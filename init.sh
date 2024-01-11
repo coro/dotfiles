@@ -17,220 +17,63 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Speed up held down keys
 defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 30
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
 
 # Dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
 # UK PC Keyboard layout
-defaults write com.apple.HIToolbox '{
-    AppleCurrentKeyboardLayoutInputSourceID = "com.apple.keylayout.British-PC";
-    AppleEnabledInputSources =     (
-                {
-            "Bundle ID" = "com.apple.CharacterPaletteIM";
-            InputSourceKind = "Non Keyboard Input Method";
-        },
-                {
-            "Bundle ID" = "com.apple.PressAndHold";
-            InputSourceKind = "Non Keyboard Input Method";
-        },
-                {
-            InputSourceKind = "Keyboard Layout";
-            "KeyboardLayout ID" = 250;
-            "KeyboardLayout Name" = "British-PC";
-        },
-                {
-            InputSourceKind = "Keyboard Layout";
-            "KeyboardLayout ID" = 2;
-            "KeyboardLayout Name" = British;
-        }
-    );
-    AppleInputSourceHistory =     (
-                {
-            InputSourceKind = "Keyboard Layout";
-            "KeyboardLayout ID" = 250;
-            "KeyboardLayout Name" = "British-PC";
-        }
-    );
-    AppleSelectedInputSources =     (
-                {
-            "Bundle ID" = "com.apple.PressAndHold";
-            InputSourceKind = "Non Keyboard Input Method";
-        },
-                {
-            InputSourceKind = "Keyboard Layout";
-            "KeyboardLayout ID" = 250;
-            "KeyboardLayout Name" = "British-PC";
-        }
-    );
-}
-'
+defaults delete com.apple.HIToolbox AppleEnabledInputSources
+defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string 'com.apple.keylayout.British-PC'
+defaults write com.apple.HIToolbox AppleInputSourceHistory -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>250</integer><key>KeyboardLayout Name</key><string>British-PC</string></dict>'
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>250</integer><key>KeyboardLayout Name</key><string>British-PC</string></dict>'
+defaults write com.apple.HIToolbox AppleSelectedInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>250</integer><key>KeyboardLayout Name</key><string>British-PC</string></dict>'
 
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
-# Disable fn/Globe and Caps Lock
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys '{
-    118 =         {
-        enabled = 0;
-        value =             {
-            parameters =                 (
-                65535,
-                18,
-                262144
-            );
-            type = standard;
-        };
-    };
-    119 =         {
-        enabled = 0;
-        value =             {
-            parameters =                 (
-                65535,
-                19,
-                262144
-            );
-            type = standard;
-        };
-    };
-    120 =         {
-        enabled = 0;
-        value =             {
-            parameters =                 (
-                65535,
-                20,
-                262144
-            );
-            type = standard;
-        };
-    };
-    15 =         {
-        enabled = 0;
-    };
-    16 =         {
-        enabled = 0;
-    };
-    164 =         {
-        enabled = 0;
-        value =             {
-            parameters =                 (
-                65535,
-                65535,
-                0
-            );
-            type = standard;
-        };
-    };
-    17 =         {
-        enabled = 0;
-    };
-    18 =         {
-        enabled = 0;
-    };
-    19 =         {
-        enabled = 0;
-    };
-    20 =         {
-        enabled = 0;
-    };
-    21 =         {
-        enabled = 0;
-    };
-    22 =         {
-        enabled = 0;
-    };
-    23 =         {
-        enabled = 0;
-    };
-    24 =         {
-        enabled = 0;
-    };
-    25 =         {
-        enabled = 0;
-    };
-    26 =         {
-        enabled = 0;
-    };
-    60 =         {
-        enabled = 0;
-        value =             {
-            parameters =                 (
-                32,
-                49,
-                262144
-            );
-            type = standard;
-        };
-    };
-    61 =         {
-        enabled = 0;
-        value =             {
-            parameters =                 (
-                32,
-                49,
-                786432
-            );
-            type = standard;
-        };
-    };
-    64 =         {
-        enabled = 0;
-        value =             {
-            parameters =                 (
-                32,
-                49,
-                1048576
-            );
-            type = standard;
-        };
-    };
-    79 =         {
-        enabled = 1;
-        value =             {
-            parameters =                 (
-                65535,
-                123,
-                8650752
-            );
-            type = standard;
-        };
-    };
-    80 =         {
-        enabled = 1;
-        value =             {
-            parameters =                 (
-                65535,
-                123,
-                8781824
-            );
-            type = standard;
-        };
-    };
-    81 =         {
-        enabled = 1;
-        value =             {
-            parameters =                 (
-                65535,
-                124,
-                8650752
-            );
-            type = standard;
-        };
-    };
-    82 =         {
-        enabled = 1;
-        value =             {
-            parameters =                 (
-                65535,
-                124,
-                8781824
-            );
-            type = standard;
-        };
-    };
-}
-'
-#
+# Disable Show Spotlight search
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64 "<dict><key>enabled</key><false/></dict>"
+
+# Move left a space - Ctrl + Left
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79 "
+  <dict>
+    <key>enabled</key><true/>
+    <key>value</key><dict>
+      <key>type</key><string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>65535</integer>
+        <integer>123</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Move right a space - Ctrl + Right
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81 "
+  <dict>
+    <key>enabled</key><true/>
+    <key>value</key><dict>
+      <key>type</key><string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>65535</integer>
+        <integer>124</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Disable Switch to Space 1
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 118 "<dict><key>enabled</key><false/></dict>"
+# Disable Switch to Space 2
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 119 "<dict><key>enabled</key><false/></dict>"
+# Disable Switch to Space 3
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 120 "<dict><key>enabled</key><false/></dict>"
+
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
@@ -248,6 +91,9 @@ defaults write com.raycast.macos raycastGlobalHotkey -string "Command-49"
 
 # Start Rectangle on boot (won't work, not installed yet)
 # defaults write com.knollsoft.Rectangle launchOnLogin -int 1
+
+# Set Desktop wallpaper
+osascript -e 'tell application "System Events" to tell every desktop to set picture to "~/.config/wezterm/Coriolis_Station.png"'
 
 touch ~/.coro.init
 

@@ -17,3 +17,8 @@ eval "$(pyenv init -)"
 eval "$(oh-my-posh init zsh --config $HOME/.posh.json)"
 
 export PATH="$PATH:$HOME/.rd/bin"
+alias k=kubectl
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+alias fgab="flux get all -A --status-selector ready=false"
+alias fga="flux get all -A"
+alias fgaw="watch flux get all -A"
