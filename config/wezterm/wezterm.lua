@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 
 local function get_current_working_dir(tab)
-  local current_dir = tab.active_pane.current_working_dir
+  local current_dir = tab.active_pane.current_working_dir.file_path
   local HOME_DIR = string.format('file://%s', os.getenv('HOME'))
 
   return current_dir == HOME_DIR and wezterm.nerdfonts.md_home
@@ -27,7 +27,7 @@ return {
   window_background_opacity = 0.9,
   macos_window_background_blur = 7,
   mouse_wheel_scrolls_tabs = false,
-  use_fancy_tab_bar = false,
+  use_fancy_tab_bar = true,
   leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
     {
