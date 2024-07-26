@@ -20,3 +20,21 @@ export PATH="$PATH:$HOME/.rd/bin"
 alias k=kubectl
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 alias killdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+function coauth() {
+  git shortlog --summary --numbered --email --all . \
+    | cut -f2- \
+    | awk '$0="Co-authored-by: "$0' \
+    | fgrep -v "$(git config user.email)" \
+    | fzf --multi --exit-0 --no-sort \
+    | pbcopy
+}
+
+function gitsize() {
+  git rev-list --objects --all \
+    | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
+    | sed -n 's/^blob //p' \
+    | sort --numeric-sort --key=2 \
+    | tail -n 20 \
+    | cut -c 1-12,41- \
+    | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+}
