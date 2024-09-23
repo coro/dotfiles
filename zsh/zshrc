@@ -14,9 +14,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-eval "$(oh-my-posh init zsh --config $HOME/.posh.json)"
-
-export PATH="$PATH:$HOME/.rd/bin"
 alias k=kubectl
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 alias killdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
@@ -38,3 +35,5 @@ function gitsize() {
     | cut -c 1-12,41- \
     | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 }
+
+eval "$(starship init zsh)"

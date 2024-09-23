@@ -20,20 +20,20 @@
       path: zsh/zprofile
     ~/.zshrc:
       path: zsh/zshrc
-    ~/.fzf.zsh:
-      path: zsh/fzf.zsh
-    ~/.posh.json:
-      path: posh.json
     ~/.gitconfig:
       path: gitconfig
     ~/.config/nvim:
       path: config/nvim
     ~/.config/wezterm:
       path: config/wezterm
+    ~/.config/starship.toml:
+      path: starship.toml
     ~/.gnupg/gpg-agent.conf:
       path: gnupg/gpg-agent.conf
 
 - shell:
+    - description: sync dotbot
+      command: git submodule sync --recursive
     - command: nvim --headless "+Lazy! sync" +qa
       description: Prepare Neovim
       quiet: false

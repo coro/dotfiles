@@ -20,7 +20,7 @@ wezterm.on(
 )
 
 return {
-  font = wezterm.font 'JetBrains Mono',
+  font = wezterm.font 'JetBrainsMono Nerd Font',
   font_size = 13.0,
   color_scheme = "nightfox",
   tab_bar_at_bottom = true,
