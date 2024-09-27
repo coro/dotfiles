@@ -1,3 +1,5 @@
+-- lua_ls takes a long time to load, resulting in an annoying flickering of colours when the semantic
+-- tokens kick in.
 vim.highlight.priorities.semantic_tokens = 95
 return {
 
