@@ -8,6 +8,7 @@ return {
 		indent = { enable = true },
 		ensure_installed = {
 			"lua",
+			"terraform",
 		},
 	},
 	config = function(_, opts)
