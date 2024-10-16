@@ -16,7 +16,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 return {
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	font = wezterm.font("JetBrainsMono NF"),
 	font_size = 13.0,
 	colors = require("cyberdream"),
 	tab_bar_at_bottom = true,
