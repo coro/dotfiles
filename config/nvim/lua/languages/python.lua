@@ -3,7 +3,7 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				tf = { "terraform_fmt" },
+				python = { "black" },
 			},
 		},
 	},
@@ -14,13 +14,13 @@ return {
 				"williamboman/mason.nvim",
 				opts = function(_, opts)
 					opts.ensure_installed = opts.ensure_installed or {}
-					vim.list_extend(opts.ensure_installed, { "tflint" })
+					vim.list_extend(opts.ensure_installed, { "pylint" })
 				end,
 			},
 		},
 		opts = {
 			linters_by_ft = {
-				tf = { "tflint" },
+				python = { "pylint" },
 			},
 		},
 	},
@@ -37,13 +37,13 @@ return {
 				},
 				opts = function(_, opts)
 					opts.ensure_installed = opts.ensure_installed or {}
-					vim.list_extend(opts.ensure_installed, { "terraform_ls" })
+					vim.list_extend(opts.ensure_installed, { "pyright" })
 				end,
 			},
 		},
 		opts = {
 			servers = {
-				terraformls = {},
+				pyright = {},
 			},
 		},
 	},
