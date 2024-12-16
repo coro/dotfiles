@@ -70,7 +70,7 @@ return {
 		"CopilotC-Nvim/CopilotChat.nvim",
 		event = "VeryLazy",
 		enabled = enable_copilot(),
-		branch = "canary", -- while in development
+		branch = "main",
 		dependencies = {
 			{ "zbirenbaum/copilot.lua" },
 			{ "nvim-lua/plenary.nvim" },
@@ -78,10 +78,10 @@ return {
 		build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {
 			debug = false, -- Enable debugging
+			chat_autocomplete = true,
 		},
 		config = function(_, opts)
 			require("CopilotChat").setup(opts)
-			require("CopilotChat.integrations.cmp").setup()
 		end,
 	},
 }
