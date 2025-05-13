@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "wez/wezterm"
 brew "gnupg"
 brew "neovim"
