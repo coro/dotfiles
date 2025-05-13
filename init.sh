@@ -89,6 +89,14 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Dock: set to right
 defaults write com.apple.dock "orientation" -string "right"
 
+# Dock: show only active apps
+defaults write com.apple.dock "static-only" -bool "true"
+
+# Dock: autohide
+defaults write com.apple.dock "autohide" -bool "true"
+defaults write com.apple.dock "autohide-delay" -float "0"
+defaults write com.apple.dock "autohide-time-modifier" -float "0.2"
+
 # Raycast: use cmd-Space as shortcut
 defaults write com.raycast.macos raycastGlobalHotkey -string "Command-49"
 
