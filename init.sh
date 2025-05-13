@@ -86,6 +86,9 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
+# Dock: set to right
+defaults write com.apple.dock "orientation" -string "right"
+
 # Raycast: use cmd-Space as shortcut
 defaults write com.raycast.macos raycastGlobalHotkey -string "Command-49"
 
