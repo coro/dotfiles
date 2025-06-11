@@ -75,7 +75,7 @@ return {
 			{ "zbirenbaum/copilot.lua" },
 			{ "nvim-lua/plenary.nvim" },
 		},
-		build = "make tiktoken", -- Only on MacOS or Linux
+		-- build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {
 			debug = false, -- Enable debugging
 			chat_autocomplete = true,

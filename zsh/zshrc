@@ -10,6 +10,7 @@ zstyle ':completion:*:*:make:*' tag-order 'targets'
 autoload -Uz compinit && compinit
 
 export PATH="$PATH:$HOME/.local/share/nvim/lazy/luarocks.nvim/.rocks/bin/"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 alias k=kubectl
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
