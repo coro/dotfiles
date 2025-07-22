@@ -38,3 +38,18 @@ vim.o.clipboard = "unnamedplus"
 vim.o.smartindent = true
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
+
+-- Take advantage of the nvim 0.11 diagnostics options
+vim.diagnostic.config({
+  -- Use the default configuration
+  -- virtual_lines = true
+
+  -- Alternatively, customize specific options
+  virtual_lines = {
+    -- Only show virtual line diagnostics for the current cursor line
+    current_line = true,
+  },
+})
+
+-- Prettier popups
+vim.o.winborder = "rounded"

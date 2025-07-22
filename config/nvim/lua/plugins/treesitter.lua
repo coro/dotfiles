@@ -6,10 +6,7 @@ return {
 	opts = {
 		highlight = { enable = true },
 		indent = { enable = true },
-		ensure_installed = {
-			"lua",
-			"terraform",
-		},
+		ensure_installed = {},
 	},
 	config = function(_, opts)
 		require("nvim-treesitter.configs").setup(opts)
