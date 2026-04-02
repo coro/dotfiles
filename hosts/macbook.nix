@@ -117,7 +117,8 @@
       "raycast"
       "rectangle"
       "wez/wezterm/wezterm"
-      "wireshark"
+      "wireshark-app"
+      "tableplus"
     ];
     onActivation = {
       cleanup = "zap";
