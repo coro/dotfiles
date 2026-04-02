@@ -1,7 +1,3 @@
--- Set <space> as the leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -28,14 +24,10 @@ vim.wo.signcolumn = "yes"
 -- Set colorscheme
 vim.o.termguicolors = true
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
-
 -- Use system clipboard
 vim.o.clipboard = "unnamedplus"
 
--- Set indent to 2 spaces
-vim.o.smartindent = true
+-- Default indent to 2 spaces (vim-sleuth overrides per-file when detected)
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 

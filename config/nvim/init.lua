@@ -1,3 +1,2 @@
-require("config.vimoptions")
-require("config.keybindings")
-require("config.lazy")
+require("core.vimoptions")
+require("core.lazy")
