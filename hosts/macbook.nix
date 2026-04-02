@@ -19,6 +19,9 @@
     home = "/Users/connor.rogers";
   };
 
+  # Enable sudo with TouchID
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   # macOS system defaults
   system.defaults = {
     NSGlobalDomain = {
