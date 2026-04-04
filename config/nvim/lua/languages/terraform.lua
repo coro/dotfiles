@@ -1,4 +1,4 @@
-return require("lib.language")({
+require("lib.language").register({
 	filetypes  = { "terraform", "tf" },
 	treesitter = "terraform",
 	lsp        = "terraformls",

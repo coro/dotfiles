@@ -47,7 +47,7 @@
     clj-kondo
   ];
 
-  # Neovim config (kept as-is, managed by lazy.nvim)
+  # Neovim config (kept as-is, managed by vim.pack)
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/nvim";
 

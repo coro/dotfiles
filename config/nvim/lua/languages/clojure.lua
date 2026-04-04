@@ -1,4 +1,4 @@
-return require("lib.language")({
+require("lib.language").register({
 	filetypes  = { "clojure", "edn" },
 	treesitter = "clojure",
 	lsp        = "clojure_lsp",

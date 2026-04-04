@@ -1,23 +1,13 @@
-return {
-	"mfussenegger/nvim-lint",
-	event = {
-		"BufReadPre",
-		"BufNewFile",
-	},
-	opts = {
-		linters_by_ft = {},
-	},
-	config = function(_, opts)
-		local lint = require("lint")
+vim.pack.add({ "https://github.com/mfussenegger/nvim-lint" })
 
-		lint.linters_by_ft = opts.linters_by_ft
-		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+local lang = require("lib.language")
+local lint = require("lint")
 
-		vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
-			group = lint_augroup,
-			callback = function()
-				lint.try_lint()
-			end,
-		})
+lint.linters_by_ft = lang.linters_by_ft
+
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+	group = vim.api.nvim_create_augroup("lint", { clear = true }),
+	callback = function()
+		lint.try_lint()
 	end,
-}
+})

@@ -1,4 +1,4 @@
-return require("lib.language")({
+require("lib.language").register({
 	filetypes  = { "go" },
 	treesitter = "go",
 	lsp        = "gopls",

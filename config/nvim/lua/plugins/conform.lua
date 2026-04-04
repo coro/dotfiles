@@ -1,34 +1,17 @@
-return {
-	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
-	cmd = { "ConformInfo" },
-	keys = {
-		{
-			-- Customize or remove this keymap to your liking
-			"<leader>f",
-			function()
-				require("conform").format({ async = true })
-			end,
-			mode = "",
-			desc = "Format buffer",
-		},
+vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
+
+local lang = require("lib.language")
+
+require("conform").setup({
+	formatters_by_ft = lang.formatters_by_ft,
+	default_format_opts = {
+		lsp_format = "fallback",
 	},
-	---@module "conform"
-	---@type conform.setupOpts
-	opts = {
-		-- Define your formatters
-		formatters_by_ft = {},
-		-- Set default options
-		default_format_opts = {
-			lsp_format = "fallback",
-		},
-		-- Set up format-on-save
-		format_on_save = { timeout_ms = 500 },
-		-- Customize formatters
-		formatters = {},
-	},
-	init = function()
-		-- Tell nvim built in formatting to use the conform formatting
-		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-	end,
-}
+	format_on_save = { timeout_ms = 500 },
+})
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+vim.keymap.set("", "<leader>f", function()
+	require("conform").format({ async = true })
+end, { desc = "Format buffer" })

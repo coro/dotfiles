@@ -1,11 +1,7 @@
-return {
-	"lukas-reineke/indent-blankline.nvim",
-	main = "ibl",
-	---@module "ibl"
-	---@type ibl.config
-	opts = {
-		indent = {
-			char = { "│" },
-		},
+vim.pack.add({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
+
+require("ibl").setup({
+	indent = {
+		char = { "│" },
 	},
-}
+})

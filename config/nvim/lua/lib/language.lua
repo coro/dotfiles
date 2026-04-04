@@ -1,81 +1,44 @@
--- Generates lazy.nvim plugin specs for a language configuration.
---
--- Accepts a table with:
---   filetypes       (required) e.g. { "go" }
---   treesitter      (optional) grammar name, e.g. "go"
---   lsp             (optional) server name, e.g. "gopls"
---   formatter       (optional) string or { install = "...", name = "..." }
---   linter          (optional) string or { install = "...", name = "..." }
+-- Shared language registry.
+-- Language files call M.register() to declare their tools.
+-- Plugin setup files read from the collected tables.
+
+local M = {
+	treesitter_grammars = {},
+	lsp_servers = {},
+	formatters_by_ft = {},
+	linters_by_ft = {},
+}
 
 local function normalise_tool(tool)
 	if type(tool) == "string" then
-		return { install = tool, name = tool }
+		return tool
 	end
-	return { install = tool.install or tool.name, name = tool.name or tool.install }
+	return tool.name or tool.install
 end
 
-local function extend_opts(key, values)
-	return function(_, opts)
-		opts[key] = opts[key] or {}
-		vim.list_extend(opts[key], values)
-	end
-end
-
-local function mason_install(name)
-	return {
-		"mason-org/mason.nvim",
-		opts = extend_opts("mason_installations", { name }),
-	}
-end
-
-return function(lang)
-	local ft = lang.filetypes
-	local specs = {}
-
+function M.register(lang)
 	if lang.treesitter then
 		local grammars = type(lang.treesitter) == "table" and lang.treesitter or { lang.treesitter }
-		specs[#specs + 1] = {
-			"nvim-treesitter/nvim-treesitter",
-			ft = ft,
-			opts = extend_opts("ensure_installed", grammars),
-		}
+		vim.list_extend(M.treesitter_grammars, grammars)
 	end
 
 	if lang.lsp then
-		specs[#specs + 1] = {
-			"mason-org/mason-lspconfig.nvim",
-			ft = ft,
-			opts = extend_opts("ensure_installed", { lang.lsp }),
-		}
+		table.insert(M.lsp_servers, lang.lsp)
 	end
 
 	if lang.formatter then
-		local f = normalise_tool(lang.formatter)
-		local ft_map = {}
-		for _, t in ipairs(ft) do
-			ft_map[t] = { f.name }
+		local name = normalise_tool(lang.formatter)
+		for _, ft in ipairs(lang.filetypes) do
+			M.formatters_by_ft[ft] = { name }
 		end
-		specs[#specs + 1] = {
-			"stevearc/conform.nvim",
-			ft = ft,
-			dependencies = { mason_install(f.install) },
-			opts = { formatters_by_ft = ft_map },
-		}
 	end
 
 	if lang.linter then
-		local l = normalise_tool(lang.linter)
-		local ft_map = {}
-		for _, t in ipairs(ft) do
-			ft_map[t] = { l.name }
+		local name = normalise_tool(lang.linter)
+		for _, ft in ipairs(lang.filetypes) do
+			M.linters_by_ft[ft] = { name }
 		end
-		specs[#specs + 1] = {
-			"mfussenegger/nvim-lint",
-			ft = ft,
-			dependencies = { mason_install(l.install) },
-			opts = { linters_by_ft = ft_map },
-		}
 	end
-
-	return specs
 end
+
+return M

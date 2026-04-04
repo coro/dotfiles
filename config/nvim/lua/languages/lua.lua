@@ -1,6 +1,6 @@
 vim.hl.priorities.semantic_tokens = 95
 
-return require("lib.language")({
+require("lib.language").register({
 	filetypes  = { "lua" },
 	treesitter = "lua",
 	lsp        = "lua_ls",

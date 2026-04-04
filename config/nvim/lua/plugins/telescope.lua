@@ -1,23 +1,14 @@
-return {
-	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		"nvim-tree/nvim-web-devicons",
-	},
-	cmd = { "Telescope" },
-	keys = {
-		{ "<leader>km", "<cmd>Telescope keymaps<cr>", desc = "[k]ey[m]aps" },
-		{ "<leader>lg", "<cmd>Telescope live_grep<cr>", desc = "[l]ive [g]rep" },
-		{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "[f]ind [f]iles" },
-	},
-	opts = {
-		extensions = { fzf = {} },
-	},
-	config = function(_, opts)
-		local telescope = require("telescope")
-		telescope.setup(opts)
-		telescope.load_extension("fzf")
-	end,
-}
+vim.pack.add({
+	"https://github.com/nvim-telescope/telescope.nvim",
+	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-tree/nvim-web-devicons",
+})
+
+local telescope = require("telescope")
+telescope.setup({ extensions = { fzf = {} } })
+telescope.load_extension("fzf")
+
+vim.keymap.set("n", "<leader>km", "<cmd>Telescope keymaps<cr>", { desc = "[k]ey[m]aps" })
+vim.keymap.set("n", "<leader>lg", "<cmd>Telescope live_grep<cr>", { desc = "[l]ive [g]rep" })
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "[f]ind [f]iles" })
