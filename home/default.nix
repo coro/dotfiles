@@ -26,6 +26,7 @@ in
     pinentry_mac
     claude-code
     tree-sitter
+    nerd-fonts.jetbrains-mono
 
     # LSPs
     gopls

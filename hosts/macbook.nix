@@ -119,7 +119,6 @@
       "wez/wezterm"
     ];
     casks = [
-      "font-jetbrains-mono-nerd-font"
       "raycast"
       "rectangle"
       "wez/wezterm/wezterm"
