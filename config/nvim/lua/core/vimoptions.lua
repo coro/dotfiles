@@ -33,15 +33,14 @@ vim.o.expandtab = true
 
 -- Take advantage of the nvim 0.11 diagnostics options
 vim.diagnostic.config({
-  -- Use the default configuration
-  -- virtual_lines = true
-
-  -- Alternatively, customize specific options
-  virtual_lines = {
-    -- Only show virtual line diagnostics for the current cursor line
-    current_line = true,
-  },
+	virtual_lines = {
+		current_line = true,
+	},
 })
+
+-- Automatic completion popup in insert mode
+vim.o.completeopt = "menuone,popup,fuzzy"
+vim.o.autocomplete = true
 
 -- Prettier popups
 vim.o.winborder = "rounded"

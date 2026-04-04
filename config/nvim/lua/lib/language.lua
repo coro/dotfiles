@@ -33,10 +33,11 @@ return function(lang)
 	local specs = {}
 
 	if lang.treesitter then
+		local grammars = type(lang.treesitter) == "table" and lang.treesitter or { lang.treesitter }
 		specs[#specs + 1] = {
 			"nvim-treesitter/nvim-treesitter",
 			ft = ft,
-			opts = extend_opts("ensure_installed", { lang.treesitter }),
+			opts = extend_opts("ensure_installed", grammars),
 		}
 	end
 

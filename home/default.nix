@@ -21,6 +21,7 @@
     yazi
     pinentry_mac
     claude-code
+    tree-sitter
 
     # LSPs
     gopls
