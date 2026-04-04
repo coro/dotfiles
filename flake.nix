@@ -27,9 +27,6 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            dotfilesPath = "/Users/connor.rogers/workspace/dotfiles";
-          };
           home-manager.users."connor.rogers" = import ./home;
         }
       ];

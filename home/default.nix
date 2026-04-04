@@ -1,4 +1,8 @@
-{ pkgs, config, dotfilesPath, ... }:
+{ pkgs, config, ... }:
+
+let
+  dotfilesPath = "${config.home.homeDirectory}/workspace/dotfiles";
+in
 
 {
   imports = [

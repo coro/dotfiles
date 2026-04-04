@@ -1,5 +1,8 @@
-{ ... }:
+{ config, ... }:
 
+let
+  dotfilesPath = "${config.home.homeDirectory}/workspace/dotfiles";
+in
 {
   programs.zsh = {
     enable = true;
@@ -9,7 +12,7 @@
       vim = "nvim";
       k = "kubectl";
       killdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
-      rebuild = "sudo darwin-rebuild switch --flake ~/workspace/dotfiles#macbook";
+      rebuild = "sudo darwin-rebuild switch --flake ${dotfilesPath}#macbook";
     };
 
     completionInit = ''

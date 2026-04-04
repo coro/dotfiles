@@ -10,7 +10,7 @@ Declarative macOS configuration using [nix-darwin](https://github.com/nix-darwin
 - **Shell**: zsh, fzf, starship
 - **Git**: config, signing, aliases, LFS
 - **GPG**: agent config with pinentry-mac
-- **Neovim**: config symlinked as-is (plugins managed by lazy.nvim, LSPs by Mason)
+- **Neovim**: config symlinked as-is (plugins managed by vim.pack, LSPs/formatters/linters via nix)
 - **Wezterm**: config symlinked as-is
 
 ## Prerequisites
@@ -65,7 +65,7 @@ home/
   shell.nix            # zsh, fzf, starship
   git.nix              # Git config, signing, aliases
 config/
-  nvim/                # Neovim config (lazy.nvim, Mason, treesitter)
+  nvim/                # Neovim config (vim.pack, treesitter)
   wezterm/             # Wezterm config + cyberdream theme
 starship.toml          # Starship prompt config (consumed by home/shell.nix)
 ```

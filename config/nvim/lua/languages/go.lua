@@ -1,6 +1,6 @@
 require("lib.language").register({
-	filetypes  = { "go" },
-	treesitter = "go",
+	filetypes  = { "go", "gomod", "gosum" },
+	treesitter = { "go", "gomod", "gosum" },
 	lsp        = "gopls",
 	formatter  = "gofumpt",
 	linter     = "golangci-lint",
