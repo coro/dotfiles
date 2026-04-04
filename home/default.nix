@@ -60,6 +60,10 @@ in
   xdg.configFile."wezterm".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/wezterm";
 
+  # Claude Code config (symlink individual files to keep auto-generated state untouched)
+  home.file.".claude/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/claude/settings.json";
+
   # GPG agent config (interpolates the correct pinentry-mac path from Nix store)
   home.file.".gnupg/gpg-agent.conf".text = ''
     pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac

@@ -18,6 +18,7 @@ end)
 return {
 	font = wezterm.font("JetBrainsMono NF"),
 	font_size = 13.0,
+	line_height = 1.0,
 	colors = require("cyberdream"),
 	tab_bar_at_bottom = true,
 	window_background_opacity = 0.9,
