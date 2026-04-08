@@ -121,7 +121,7 @@
     casks = [
       "raycast"
       "rectangle"
-      "wez/wezterm/wezterm"
+      "wez/wezterm/wezterm-nightly"
       "wireshark-app"
       "tableplus"
     ];
