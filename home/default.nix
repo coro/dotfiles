@@ -20,13 +20,14 @@ in
     neovim
     ripgrep
     luajit
-    nodejs
+    mise
     uv
     yazi
     pinentry_mac
     claude-code
     tree-sitter
     nerd-fonts.jetbrains-mono
+    kubectx
 
     # LSPs
     gopls
@@ -63,6 +64,10 @@ in
   # Claude Code config (symlink individual files to keep auto-generated state untouched)
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/claude/settings.json";
+
+  # Mise config (global tool versions)
+  xdg.configFile."mise".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/mise";
 
   # GPG agent config (interpolates the correct pinentry-mac path from Nix store)
   home.file.".gnupg/gpg-agent.conf".text = ''

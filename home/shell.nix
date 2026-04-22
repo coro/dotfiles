@@ -26,6 +26,14 @@ in
     '';
 
     initContent = ''
+      eval "$(mise activate zsh)"
+
+      __wezterm_osc7() {
+        printf '\e]7;file://%s%s\e\\' "''${HOSTNAME}" "''${PWD}"
+      }
+      chpwd_functions+=(__wezterm_osc7)
+      __wezterm_osc7
+
       export GPG_TTY="$(tty)"
       command -v go &>/dev/null && export PATH="$PATH:$(go env GOPATH)/bin"
       [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
