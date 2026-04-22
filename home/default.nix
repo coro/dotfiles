@@ -87,14 +87,16 @@ in
   home.activation.serenaConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     SERENA_CFG="$HOME/.serena/serena_config.yml"
     SERENA_SRC="${dotfilesPath}/config/serena/serena_config.yml"
+    PROJECTS_TMP=$(mktemp)
     mkdir -p "$HOME/.serena"
     if [ -f "$SERENA_CFG" ]; then
-      PROJECTS=$(run ${pkgs.yq-go}/bin/yq '.projects' "$SERENA_CFG")
+      run ${pkgs.yq-go}/bin/yq '.projects // []' "$SERENA_CFG" > "$PROJECTS_TMP"
     else
-      PROJECTS="[]"
+      echo '[]' > "$PROJECTS_TMP"
     fi
     run cp "$SERENA_SRC" "$SERENA_CFG"
-    run ${pkgs.yq-go}/bin/yq -i ".projects = $PROJECTS" "$SERENA_CFG"
+    run ${pkgs.yq-go}/bin/yq -i ".projects = load(\"$PROJECTS_TMP\")" "$SERENA_CFG"
+    rm -f "$PROJECTS_TMP"
   '';
 
   # GPG agent config (interpolates the correct pinentry-mac path from Nix store)

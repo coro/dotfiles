@@ -40,7 +40,7 @@ web_dashboard: true
 # b) manually navigating to http://localhost:24282/dashboard/ in your web browser (actual port
 #    may be higher if you have multiple instances running; try ports 24283, 24284, etc.)
 # See also: https://oraios.github.io/serena/02-usage/060_dashboard.html
-web_dashboard_open_on_launch: true
+web_dashboard_open_on_launch: false
 # the address the web dashboard will listen on (bind address).
 web_dashboard_listen_address: 127.0.0.1
 # address where JetBrains plugin servers are running (only relevant when using the JetBrains language backend)
