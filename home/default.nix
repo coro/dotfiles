@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   dotfilesPath = "${config.home.homeDirectory}/workspace/dotfiles";
@@ -28,6 +28,7 @@ in
     tree-sitter
     nerd-fonts.jetbrains-mono
     kubectx
+    yq-go
 
     # LSPs
     gopls
@@ -68,6 +69,33 @@ in
   # Mise config (global tool versions)
   xdg.configFile."mise".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/mise";
+
+  # Serena: install/upgrade via uv
+  home.activation.serenaInstall = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run ${pkgs.uv}/bin/uv tool install -p 3.13 serena-agent@latest --prerelease=allow --upgrade 2>/dev/null || true
+  '';
+
+  # Serena: register MCP server with Claude Code (idempotent)
+  home.activation.serenaMcp = lib.hm.dag.entryAfter [ "serenaInstall" ] ''
+    if ! run ${pkgs.claude-code}/bin/claude mcp list 2>/dev/null | grep -q serena; then
+      run ${pkgs.claude-code}/bin/claude mcp add --scope user serena -- \
+        serena start-mcp-server --context claude-code --project-from-cwd
+    fi
+  '';
+
+  # Serena: config (preserve projects list from existing file, override everything else)
+  home.activation.serenaConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    SERENA_CFG="$HOME/.serena/serena_config.yml"
+    SERENA_SRC="${dotfilesPath}/config/serena/serena_config.yml"
+    mkdir -p "$HOME/.serena"
+    if [ -f "$SERENA_CFG" ]; then
+      PROJECTS=$(run ${pkgs.yq-go}/bin/yq '.projects' "$SERENA_CFG")
+    else
+      PROJECTS="[]"
+    fi
+    run cp "$SERENA_SRC" "$SERENA_CFG"
+    run ${pkgs.yq-go}/bin/yq -i ".projects = $PROJECTS" "$SERENA_CFG"
+  '';
 
   # GPG agent config (interpolates the correct pinentry-mac path from Nix store)
   home.file.".gnupg/gpg-agent.conf".text = ''
