@@ -22,6 +22,8 @@ in
       gs = "git status";
       gl = "git pull";
       gp = "git push";
+      gd = "git diff";
+      gdo = "git diff @{u}";
     };
 
     completionInit = ''
