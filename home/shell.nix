@@ -13,6 +13,15 @@ in
       k = "kubectl";
       killdns = "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder";
       rebuild = "sudo darwin-rebuild switch --flake ${dotfilesPath}#macbook";
+
+      # Git
+      gap = "git add -p";
+      gco = "git checkout";
+      gcl = "git clone";
+      gc = "git commit";
+      gs = "git status";
+      gl = "git pull";
+      gp = "git push";
     };
 
     completionInit = ''
