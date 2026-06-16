@@ -55,16 +55,18 @@ trace_lsp_communication: false
 # Have a look at the docstring of the constructors of the LS implementations within solidlsp (e.g., for C# or PHP) to see which options are available.
 # No documentation on options means no options are available.
 ls_specific_settings:
-  go:
-    ls_path: gopls
   python:
-    ls_path: pyright
-  lua:
-    ls_path: lua-language-server
+    ls_path: pyright-langserver
   clojure:
     ls_path: clojure-lsp
   yaml:
     ls_path: yaml-language-server
+  go:
+    ls_path: gopls # inert (gopls taken from PATH regardless)
+  lua:
+    ls_path: lua-language-server # inert (auto-discovered from PATH regardless)
+  terraform:
+    ls_path: terraform-ls # inert (Serena always downloads terraform-ls regardless)
 # list of paths to ignore across all projects.
 # Same syntax as gitignore, so you can use * and **.
 # These patterns are merged additively with each project's own ignored_paths.
