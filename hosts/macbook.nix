@@ -115,13 +115,10 @@
   # Homebrew (for GUI apps / casks only)
   homebrew = {
     enable = true;
-    taps = [
-      "wez/wezterm"
-    ];
     casks = [
       "raycast"
       "rectangle"
-      "wez/wezterm/wezterm-nightly"
+      "wezterm@nightly"
       "wireshark-app"
       "tableplus"
     ];
