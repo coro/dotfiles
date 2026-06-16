@@ -65,6 +65,8 @@ in
   # Claude Code config (symlink individual files to keep auto-generated state untouched)
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/claude/settings.json";
+  home.file.".claude/statusline.sh".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/claude/statusline.sh";
 
   # Mise config (global tool versions)
   xdg.configFile."mise".source =
