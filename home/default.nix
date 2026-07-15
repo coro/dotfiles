@@ -76,6 +76,8 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/claude/settings.json";
   home.file.".claude/statusline.sh".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/claude/statusline.sh";
+  home.file.".claude/CLAUDE.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/claude/CLAUDE.md";
 
   # Mise config (global tool versions)
   xdg.configFile."mise".source =
