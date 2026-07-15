@@ -14,6 +14,14 @@ in
   home.homeDirectory = "/Users/connor.rogers";
   home.stateVersion = "24.11";
 
+  home.sessionVariables = {
+    PNPM_HOME = "$HOME/Library/pnpm";
+  };
+  home.sessionPath = [
+    "$HOME/Library/pnpm/bin"
+    "$HOME/Library/pnpm"
+  ];
+
   home.packages = with pkgs; [
     # Core tools
     gnupg
@@ -21,6 +29,7 @@ in
     ripgrep
     luajit
     mise
+    pnpm
     uv
     yazi
     pinentry_mac
