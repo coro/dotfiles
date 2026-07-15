@@ -46,5 +46,16 @@
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline.sh"
+  },
+  "extraKnownMarketplaces": {
+    "ginkgo": {
+      "source": {
+        "source": "github",
+        "repo": "onsi/ginkgo"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "ginkgo@ginkgo": true
   }
 }
